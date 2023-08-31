@@ -4,6 +4,7 @@ class Player:
     def __init__(self):
         self.hand = []
         self.value = 0
+        self.score = 0
         self.ace_present = False
     
     # upper bounded at 50, no point using double ended list
@@ -23,4 +24,3 @@ class Player:
 
         if self.value < 12 and self.ace_present:
             total += 10 
-            
