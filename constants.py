@@ -4,4 +4,5 @@ ROYALTY_SUITS = ["J", "Q", "K"]
 ROYALTY_VALUE = 10
 NUMBER_OF_CARDS = len(RANKS) * len(SUITS)
 SHUFFLE_THRESHOLD = 15
+DEALER_HIT_THRESHOLD = 16
 SUITS_SYMBOLS = {"Hearts": "♥", "Diamonds": "♦", "Spades": "♠", "Clubs": "♣"}
