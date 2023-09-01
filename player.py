@@ -1,4 +1,4 @@
-from constants import ROYALTY_SUITS, ROYALTY_VALUE
+from constants import ROYALTY_SUITS, ROYALTY_VALUE, ACE_VALUE, ACE_THRESHOLD, ACE_REMAINING_VALUE, ACE_SUIT
 
 class Player:
     def __init__(self, name):
@@ -6,12 +6,14 @@ class Player:
         self.value = 0
         self.score = 0
         self.name = name
-        self.ace_present = False
 
     def reset(self):
         self.hand = []
         self.value = 0
         self.ace_present = False
+
+    def get_num_cards_in_hand(self):
+        return len(self.hand)
     
     # upper bounded at 50, no point using double ended list
     def add_card(self, card):
@@ -19,14 +21,12 @@ class Player:
         self.calculate_value(card)
 
     def calculate_value(self, card):
-        curr_card_rank = card.rank
-        if curr_card_rank.isdigit():
-            self.value += int(curr_card_rank)
-        elif curr_card_rank in ROYALTY_SUITS:
+        drawn_card_rank = card.rank
+        if drawn_card_rank.isdigit():
+            self.value += int(drawn_card_rank)
+        elif drawn_card_rank in ROYALTY_SUITS:
             self.value += ROYALTY_VALUE
-        elif curr_card_rank == "A":
-            self.ace_present = True
-            self.value += 1
-
-        if self.value < 12 and self.ace_present:
-            self.value += 10 
+        elif drawn_card_rank in ACE_SUIT:
+            self.value += ACE_VALUE
+            if self.value < ACE_THRESHOLD:
+                self.value += ACE_REMAINING_VALUE
