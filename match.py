@@ -1,6 +1,6 @@
 from player import Player
 from game import Game
-from constants import USER_GAME_INPUT_FIRST_GAME_MSG, USER_GAME_INPUT_MSG, USER_INPUT_CARD_INVALID_MSG, YES, NO
+from constants import USER_GAME_INPUT_FIRST_GAME_MSG, USER_GAME_INPUT_MSG, USER_INPUT_CARD_INVALID_MSG
 from ui import Ui
 
 class Match:

@@ -1,6 +1,6 @@
 from player import Player
 from deck import Deck
-from constants import DEALER_HIT_THRESHOLD, BLACKJACK_VALUE, POINTS_DEFEAT, POINTS_VICTORY, POINTS_BLACKJACK_VICTORY
+from constants import DEALER_HIT_THRESHOLD, BLACKJACK_VALUE, POINTS_DEFEAT, POINTS_VICTORY, POINTS_BLACKJACK_VICTORY, NUM_CARDS_FOR_BLACKJACK
 from ui import Ui
 
 class Game:
@@ -74,7 +74,7 @@ class Game:
             self.player_exceed_21()
         elif self.dealer.value == self.player.value:
             self.player_equal_to_dealer()
-        elif self.player.value == BLACKJACK_VALUE and self.player.get_num_cards_in_hand() == 2:
+        elif self.player.value == BLACKJACK_VALUE and self.player.get_num_cards_in_hand() == NUM_CARDS_FOR_BLACKJACK:
             self.player_blackjack()
         elif self.dealer.value > BLACKJACK_VALUE:
             self.dealer_exceed_21()
