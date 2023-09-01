@@ -1,10 +1,16 @@
 from constants import ROYALTY_SUITS, ROYALTY_VALUE
 
 class Player:
-    def __init__(self):
+    def __init__(self, name):
         self.hand = []
         self.value = 0
         self.score = 0
+        self.name = name
+        self.ace_present = False
+
+    def reset(self):
+        self.hand = []
+        self.value = 0
         self.ace_present = False
     
     # upper bounded at 50, no point using double ended list
@@ -23,4 +29,4 @@ class Player:
             self.value += 1
 
         if self.value < 12 and self.ace_present:
-            total += 10 
+            self.value += 10 

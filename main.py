@@ -1,6 +1,5 @@
-from game import Game
+from match import Match
 
 if __name__ == "__main__":
-    game = Game()
-    game.start()
-    
+    match = Match()
+    match.start()

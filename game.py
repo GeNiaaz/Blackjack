@@ -1,12 +1,18 @@
 from player import Player
 from deck import Deck
 from constants import DEALER_HIT_THRESHOLD
+from ui import Ui
 
 class Game:
-    def __init__(self):
+    def __init__(self, player, dealer):
         self.deck = Deck()
-        self.player = Player()
-        self.dealer = Player()
+        self.player = player
+        self.dealer = dealer
+        self.reset_players()
+
+    def reset_players(self):
+        self.player.reset()
+        self.dealer.reset()
 
     def start(self):
         # deal 2 cards to dealer
@@ -19,13 +25,13 @@ class Game:
 
         # player turns
         while True:
-            print("Player's Hand:", [card.rank + " of " + card.suit for card in self.player.hand])
-            print("Dealer's Hand:", [self.dealer.hand[0].rank + " of " + self.dealer.hand[0].suit, "Hidden Card"])
+            Ui.display_player_hand(self.player)
+            Ui.display_initial_dealer_hand(self.dealer)
             
-            player_choice = input("Do you want to Hit or Stay? ").lower()
+            player_choice = input("Do you want to Hit or Stay? \n>>> ").lower()
             if player_choice == "hit":
                 self.player.add_card(self.deck.deal())
-                if self.player.score > 21:
+                if self.player.value > 21:
                     break
             elif player_choice == "stay":
                 break
@@ -35,32 +41,30 @@ class Game:
 
 
     def dealer_turn(self):
-        if self.player.score > 21:
+        if self.player.value > 21:
             return
-        while self.dealer.score < DEALER_HIT_THRESHOLD:
+        while self.dealer.value < DEALER_HIT_THRESHOLD:
             self.dealer.add_card(self.deck.deal())
-
-    def display_hand(self,):
-        print("Player's Hand:", [card.rank + " of " + card.suit for card in self.player.hand])
-        print("Dealer's Hand:", [card.rank + " of " + card.suit for card in self.dealer.hand])
-
         
     def determine_winner(self):
-        # self.display_hand(self.player)
-        # self.display_hand(self.dealer)
-        self.display_hand()
+        Ui.display_player_hand(self.player)
+        Ui.display_player_hand(self.dealer)
         
-        if self.player.score > 21:
-            print("Player scores {self.player.score} and loses! \nPlayer loses 10 points")
+        if self.player.value > 21:
+            print(f"Player got {self.player.value} and loses! \nPlayer loses 10 points")
             self.player.score -= 10
-        elif self.dealer.score < 21 and self.dealer.score < self.player.score:
-            print("Player scores {self.player.score} and wins! \nPlayer gains 10 points")
-            self.player.score += 10
-        elif self.dealer.score == 21 and self.dealer.score < self.player.score:
-            print("Player scores Blackjack and wins! \nPlayer gains 15 points")
+        elif self.dealer.value == self.player.value:
+            print("It's a Push!")
+        elif self.player.value == 21:
+            print(f"Player scores Blackjack and wins! \nPlayer gains 15 points")
             self.player.score += 15
-        elif self.dealer.score > self.player.score:
-            print("Dealer scores {self.dealer.score} and wins! \nPlayer loses 10 points")
+        elif self.dealer.value > 21:
+            print(f"Dealer got {self.dealer.value} and player wins! \nPlayer gains 10 points")
+        elif self.player.value > self.dealer.value:
+            print(f"Player got {self.player.value} while dealer got {self.dealer.value} and player wins! \nPlayer gains 10 points")
+            self.player.score += 10
+        elif self.dealer.value > self.player.value:
+            print(f"Dealer got {self.dealer.value} while player got {self.player.value} and wins! \nPlayer loses 10 points")
             self.player.score -= 10
         else:
             print("It's a Push!")
