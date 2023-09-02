@@ -10,11 +10,11 @@ class Round:
         self.dealer = dealer
         self.reset_players()
 
-    def reset_players(self):
+    def reset_players(self) -> None:
         self.player.reset()
         self.dealer.reset()
 
-    def start(self):
+    def start(self) -> None:
         # deal 2 cards to dealer
         self.dealer.add_card(self.deck.deal())
         self.dealer.add_card(self.deck.deal())
@@ -54,16 +54,16 @@ class Round:
         player.add_card(self.deck.deal())
         return not self.player.value >= BLACKJACK_VALUE
 
-    def player_stay(self):
+    def player_stay(self) -> bool:
         return False
 
-    def dealer_turn(self):
+    def dealer_turn(self) -> None:
         if self.player.value > BLACKJACK_VALUE:
             return
         while self.dealer.value < DEALER_HIT_THRESHOLD:
             self.dealer.add_card(self.deck.deal())
         
-    def determine_winner(self):
+    def determine_winner(self) -> None:
         Ui.clear_screen()
         Ui.skip_line()
         Ui.display_player_hand(self.dealer)
@@ -87,25 +87,25 @@ class Round:
 
         Ui.display_player_score(self.player)
 
-    def player_exceed_21(self):
+    def player_exceed_21(self) -> None:
         Ui.display_player_exceed_21_msg()
         self.player.score -= POINTS_DEFEAT
 
-    def player_equal_to_dealer(self):
+    def player_equal_to_dealer(self) -> None:
         Ui.display_player_equal_to_dealer_msg()
     
-    def player_blackjack(self):
+    def player_blackjack(self) -> None:
         Ui.display_player_blackjack_msg()
         self.player.score += POINTS_BLACKJACK_VICTORY
 
-    def dealer_exceed_21(self):
+    def dealer_exceed_21(self) -> None:
         Ui.display_dealer_exceed_21_msg()
         self.player.score += POINTS_VICTORY
 
-    def player_greater_than_dealer(self):
+    def player_greater_than_dealer(self) -> None:
         Ui.display_player_greater_than_dealer_msg()
         self.player.score += POINTS_VICTORY
 
-    def dealer_greater_than_player(self):
+    def dealer_greater_than_player(self) -> None:
         Ui.display_dealer_greater_than_player_msg()
         self.player.score -= POINTS_DEFEAT

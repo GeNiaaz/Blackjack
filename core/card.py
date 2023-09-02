@@ -1,7 +1,7 @@
 from utils.constants import SUITS_SYMBOLS
 
 class Card:
-    def __init__(self, rank, suit):
+    def __init__(self, rank: str, suit: str):
         self.rank = rank
         self.suit = suit
 

@@ -8,7 +8,7 @@ class Game:
         self.player = Player("Player")
         self.dealer = Player("Dealer")
 
-    def start(self):
+    def start(self) -> None:
         is_game_on = True
         is_first_game = True
         game = Round(self.player, self.dealer)

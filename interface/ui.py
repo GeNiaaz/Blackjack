@@ -62,7 +62,7 @@ class Ui:
         output.add(CARDS_RESHUFFLED)
         Ui.__display_to_terminal(output)
 
-    def skip_line():
+    def skip_line() -> None:
         print("")
 
     def display_player_exceed_21_msg() -> str:
