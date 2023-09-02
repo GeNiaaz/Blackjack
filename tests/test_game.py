@@ -1,6 +1,6 @@
 import unittest
 
-from core.game import Game
+from core.round import Round
 from core.card import Card
 from core.player import Player
 
@@ -8,7 +8,7 @@ class TestGame(unittest.TestCase):
     def setUp(self):
         player = Player("Player")
         dealer = Player("Dealer")
-        self.game = Game(player, dealer)
+        self.game = Round(player, dealer)
 
     def test_player_reset(self):
         self.game.player.add_card(Card("A", "Hearts"))

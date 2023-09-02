@@ -1,5 +1,5 @@
-from core.match import Match
+from core.game import Game
 
 if __name__ == "__main__":
-    match = Match()
-    match.start()
+    game = Game()
+    game.start()

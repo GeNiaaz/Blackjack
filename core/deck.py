@@ -1,5 +1,5 @@
 import random
-from utils.constants import RANKS, SUITS, NUMBER_OF_CARDS, SHUFFLE_THRESHOLD
+from utils.constants import RANKS, SUITS, SHUFFLE_THRESHOLD
 from core.card import Card
 from interface.ui import Ui
 
