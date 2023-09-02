@@ -1,4 +1,4 @@
-## Blackjack (Question 8)
+## Blackjack
 
 The game is a 1 player game versus the dealer (bot). The interface resets with every action from the user.
 
