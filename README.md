@@ -14,8 +14,10 @@ When the player chooses not to play another round, the final Game score is tabul
 to the player before the Game ends.
 
 ### Usage
-1. Type `python3 main.py` in the main directory to start the Game
-2. Follow the on-screen instructions to play the Game
+1. Check that you have python3 installed
+2. Ensure you are in the `blackjack/` directory
+3. Type `python3 main.py` start the Game
+4. Follow the on-screen instructions to play the Game
 
 ### Running tests
 1. `python3 -m unittest discover -v tests`
