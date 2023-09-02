@@ -1,4 +1,4 @@
-from match import Match
+from core.match import Match
 
 if __name__ == "__main__":
     match = Match()

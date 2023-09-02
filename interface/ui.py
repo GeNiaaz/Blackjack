@@ -1,6 +1,6 @@
-from player import Player
-from string_builder import StringBuilder
-from constants import USER_INPUT_CARD_MSG, USER_INPUT_CARD_INVALID_MSG, USER_GAME_END_MSG, \
+from core.player import Player
+from utils.string_builder import StringBuilder
+from utils.constants import USER_INPUT_CARD_MSG, USER_INPUT_CARD_INVALID_MSG, USER_GAME_END_MSG, \
 CARDS_RESHUFFLED, SUITS_SYMBOLS, PLAYER_EQUAL_TO_DEALER_MSG, PLAYER_BLACKJACK_MSG, \
 PLAYER_LOSES_MSG, PLAYER_WINS_MSG
 import os
@@ -10,15 +10,14 @@ class Ui:
         print(output)
 
     def clear_screen() -> None:
-        # os.system('clear')
-        ...
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def display_player_hand(player: Player) -> str:
         output = StringBuilder()
         
         output.add(f"{player.name}'s Hand: ")
         for card in player.hand:
-            output.add(f"{card.rank} {SUITS_SYMBOLS[card.suit]} | ")
+            output.add(f"{card} | ")
 
         output.add(f"total value: {player.value}")
 
@@ -29,7 +28,7 @@ class Ui:
         
         output.add(f"{dealer.name}'s Hand: ")
         first_card = dealer.hand[0]
-        output.add(f"{first_card.rank} {SUITS_SYMBOLS[first_card.suit]} | ")
+        output.add(f"{first_card} | ")
         output.add("X X |")
 
         Ui.__display_to_terminal(output)

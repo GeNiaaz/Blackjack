@@ -1,7 +1,7 @@
-from player import Player
-from game import Game
-from constants import USER_GAME_INPUT_FIRST_GAME_MSG, USER_GAME_INPUT_MSG, USER_INPUT_CARD_INVALID_MSG
-from ui import Ui
+from core.player import Player
+from core.game import Game
+from utils.constants import USER_GAME_INPUT_FIRST_GAME_MSG, USER_GAME_INPUT_MSG, USER_INPUT_CARD_INVALID_MSG
+from interface.ui import Ui
 
 class Match:
     def __init__(self):

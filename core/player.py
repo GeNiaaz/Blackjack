@@ -1,4 +1,4 @@
-from constants import ROYALTY_SUITS, ROYALTY_VALUE, ACE_VALUE, ACE_THRESHOLD, ACE_REMAINING_VALUE, ACE_SUIT
+from utils.constants import ROYALTY_SUITS, ROYALTY_VALUE, ACE_VALUE, ACE_THRESHOLD, ACE_REMAINING_VALUE, ACE_SUIT
 
 class Player:
     def __init__(self, name):

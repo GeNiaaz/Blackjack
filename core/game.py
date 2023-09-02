@@ -1,7 +1,7 @@
-from player import Player
-from deck import Deck
-from constants import DEALER_HIT_THRESHOLD, BLACKJACK_VALUE, POINTS_DEFEAT, POINTS_VICTORY, POINTS_BLACKJACK_VICTORY, NUM_CARDS_FOR_BLACKJACK
-from ui import Ui
+from core.player import Player
+from core.deck import Deck
+from utils.constants import DEALER_HIT_THRESHOLD, BLACKJACK_VALUE, POINTS_DEFEAT, POINTS_VICTORY, POINTS_BLACKJACK_VICTORY, NUM_CARDS_FOR_BLACKJACK
+from interface.ui import Ui
 
 class Game:
     def __init__(self, player, dealer):
